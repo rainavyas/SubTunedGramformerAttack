@@ -54,7 +54,7 @@ if __name__ == "__main__":
         curr_path = words_dir+"/"+curr_file
         with open(curr_path, 'r') as f:
             lines = f.readlines()
-        for line in lines[2:]:
+        for line in lines[1:]:
             items = line.split()
             word = str(items[0])
             val = float(items[1])
