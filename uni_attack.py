@@ -91,6 +91,7 @@ if __name__ == "__main__":
 
     best = ('none', 1000)
     for word in test_words:
+        set_seeds(args.seed) # same sampling to be used by decoder model
         sub_dict[args.WORD] = word
         edits_avg = get_avg(model, sentences, sub_dict)
 
