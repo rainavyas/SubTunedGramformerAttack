@@ -93,7 +93,7 @@ if __name__ == "__main__":
         sub_dict[args.WORD] = word
         edits_avg = get_avg(model, sentences, sub_dict)
 
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         if edits_avg < best[1]:
             best = (word, edits_avg)
             # Write to log
