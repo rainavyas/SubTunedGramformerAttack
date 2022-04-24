@@ -21,6 +21,7 @@ def set_seeds(seed):
 def get_avg(model, sentences, sub_dict):
     edit_counts = []
     for sent in sentences:
+        import pdb; pdb.set_trace()
         sent = substitute(sent, sub_dict)
         correction = correct(model, sent)
         edit_counts.append(count_edits(sent, correction))
