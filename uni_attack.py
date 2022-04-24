@@ -28,8 +28,10 @@ def get_avg(model, sentences, sub_dict):
 
 def substitute(sent, sub_dict):
     if len(sent) > 0:
+        import pdb; pdb.set_trace()
         for original_word, sub_word in sub_dict.items():
             sent = sent.replace(original_word, sub_word)
+        import pdb; pdb.set_trace()
     return sent
 
 if __name__ == "__main__":
@@ -92,7 +94,6 @@ if __name__ == "__main__":
         sub_dict[args.WORD] = word
         edits_avg = get_avg(model, sentences, sub_dict)
 
-        import pdb; pdb.set_trace()
         if edits_avg < best[1]:
             best = (word, edits_avg)
             # Write to log
