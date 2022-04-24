@@ -16,8 +16,6 @@ from datetime import date
 from statistics import mean, stdev
 from uni_attack import substitute
 
-print(sys.path)
-
 def set_seeds(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
