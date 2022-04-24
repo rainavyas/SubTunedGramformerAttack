@@ -21,7 +21,6 @@ def set_seeds(seed):
 def get_avg(model, sentences, sub_dict):
     edit_counts = []
     for sent in sentences:
-        import pdb; pdb.set_trace()
         sent = substitute(sent, sub_dict)
         correction = correct(model, sent)
         edit_counts.append(count_edits(sent, correction))
@@ -93,6 +92,7 @@ if __name__ == "__main__":
         sub_dict[args.WORD] = word
         edits_avg = get_avg(model, sentences, sub_dict)
 
+        import pdb; pdb.set_trace()
         if edits_avg < best[1]:
             best = (word, edits_avg)
             # Write to log
