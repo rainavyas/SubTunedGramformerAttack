@@ -53,6 +53,7 @@ if __name__ == "__main__":
     # Perform substitution attack
     edit_counts = []
     for i, sent in enumerate(sentences):
+        set_seeds(args.seed)
         print(f'On {i}/{len(sentences)}')
         sent = substitute(sent, sub_dict)
         correction = correct(model, sent)
