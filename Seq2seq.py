@@ -4,6 +4,7 @@ This script is inspired from Edie's class definition of Seq2seq
 
 '''
 import torch.nn as nn
+import torch
 
 # huggingface api
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
@@ -24,7 +25,8 @@ class Seq2seq(nn.Module):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
     
-    def correct(self, input_sentence, max_candidates=1):
+    def correct(self, input_sentence, max_candidates=1, seed=1):
+        torch.manual_seed(seed)
         correction_prefix = "gec: "
         input_sentence = correction_prefix + input_sentence
         input_ids = self.tokenizer.encode(input_sentence, return_tensors='pt')
