@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     # Get command line arguments
     commandLineParser = argparse.ArgumentParser()
-    commandLineParser.add_argument('IN', type=str, help='Path to input data')
+    commandLineParser.add_argument('INC', type=str, help='Path to input data')
     commandLineParser.add_argument('PRED', type=str, help='Path to predicted output test data')
     commandLineParser.add_argument('CORR', type=str, help='Path to correct output test data')
     commandLineParser.add_argument('--target', default='', type=str, help='target words')
