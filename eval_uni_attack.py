@@ -93,19 +93,19 @@ if __name__ == "__main__":
         sub_dict = json.load(json_file)
     
     # Perform substitution attack
-    edit_counts = []
+    # edit_counts = []
     pred_id2text = {}
     for i, (id, sent) in enumerate(inc_id2text.items()):
         set_seeds(args.seed)
         print(f'On {i}/{len(inc_id2text)}')
         sent = substitute(sent, sub_dict)
         correction = correct(model, sent)
-        edit_counts.append(count_edits(sent, correction))
+        # edit_counts.append(count_edits(sent, correction))
         pred_id2text[id] = correction
     
-    # Report stats
-    print('-----------')
-    print(f'Average number of edits {mean(edit_counts)} +- {stdev(edit_counts)}')
+    # # Report stats
+    # print('-----------')
+    # print(f'Average number of edits {mean(edit_counts)} +- {stdev(edit_counts)}')
 
     # Align files and save
     inc_sens, pred_sens, corr_sens = align_data(inc_id2text, pred_id2text, corr_id2text)
