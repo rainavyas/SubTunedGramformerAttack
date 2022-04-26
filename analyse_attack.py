@@ -32,7 +32,7 @@ if __name__ == "__main__":
     # get target words as a list
     target_words = args.target
     if target_words == '':
-        target_words = []
+        target_words = [' ']
     else:
         target_words = target_words.split()
         target_words = [" "+t for t in target_words]
