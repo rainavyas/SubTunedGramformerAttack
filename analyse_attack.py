@@ -52,6 +52,7 @@ if __name__ == "__main__":
     edit_counts_all = []
     edit_counts_filtered = []
     for i, (inc, pred) in enumerate(zip(incs, preds)):
+        print(f'On {i}/{len(preds)}')
         num_edits = count_edits(inc, pred)
         edit_counts_all.append(num_edits)
         if any([t in inc for t in target_words]):
