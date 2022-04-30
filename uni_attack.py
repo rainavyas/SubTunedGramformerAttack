@@ -82,6 +82,10 @@ if __name__ == "__main__":
     else:
         with open(args.prev_attack) as json_file:
             sub_dict = json.load(json_file)
+    
+    # Only keep sentences containing words to substitute
+    words_to_check = sub_dict.keys() + [args.WORD]
+    sentences = [s for s in sentences if any([w in s for w in words_to_check])]
 
     # Initialise empty log file
     with open(args.LOG, 'w') as f:
