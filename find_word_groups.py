@@ -43,6 +43,7 @@ if __name__ == "__main__":
             if corr_dict[ID] != inc_dict[ID]:
                 kept_sentences.append(inc_dict[ID])
         sentences = kept_sentences
+    print(len(sentences))
 
     # dictionary to store POS tag count per word in group
     pos_counter = defaultdict(lambda: defaultdict(int))
