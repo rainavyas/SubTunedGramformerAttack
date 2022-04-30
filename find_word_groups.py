@@ -41,6 +41,7 @@ if __name__ == "__main__":
             if ID not in inc_dict:
                 continue
             if corr_dict[ID] != inc_dict[ID]:
+                import pdb; pdb.set_trace()
                 kept_sentences.append(inc_dict[ID])
         sentences = kept_sentences
     print(len(sentences))
