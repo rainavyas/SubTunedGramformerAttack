@@ -34,17 +34,17 @@ if __name__ == "__main__":
         corr_ids, corr_sentences = get_sentences(args.corr)
         # filter
         inc_dict = {ID: sen for (ID, sen) in zip(inc_ids, sentences)}
-        corr_dict = {ID: sen for (ID, sen) in zip(corr_ids, sentences)}
+        corr_dict = {ID: sen for (ID, sen) in zip(corr_ids, corr_sentences)}
 
         kept_sentences = []
         for ID in corr_dict:
             if ID not in inc_dict:
                 continue
             if corr_dict[ID] != inc_dict[ID]:
-                import pdb; pdb.set_trace()
+                # import pdb; pdb.set_trace()
                 kept_sentences.append(inc_dict[ID])
         sentences = kept_sentences
-    print(len(sentences))
+    print("Sentences", len(sentences))
 
     # dictionary to store POS tag count per word in group
     pos_counter = defaultdict(lambda: defaultdict(int))
