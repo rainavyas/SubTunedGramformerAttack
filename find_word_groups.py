@@ -38,6 +38,8 @@ if __name__ == "__main__":
 
         kept_sentences = []
         for ID in corr_dict:
+            if ID not in inc_dict:
+                continue
             if corr_dict[ID] != inc_dict[ID]:
                 kept_sentences.append(inc_dict[ID])
         sentences = kept_sentences
