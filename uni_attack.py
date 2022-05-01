@@ -84,7 +84,7 @@ if __name__ == "__main__":
             sub_dict = json.load(json_file)
     
     # Only keep sentences containing words to substitute
-    words_to_check = sub_dict.keys() + [args.WORD]
+    words_to_check = list(sub_dict.keys()) + [args.WORD]
     sentences = [s for s in sentences if any([w in s for w in words_to_check])]
 
     # Initialise empty log file
