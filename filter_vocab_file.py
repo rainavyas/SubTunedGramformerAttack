@@ -16,7 +16,6 @@ if __name__ == "__main__":
     commandLineParser = argparse.ArgumentParser()
     commandLineParser.add_argument('VOCAB', type=str, help='ASR vocab file')
     commandLineParser.add_argument('OUT', type=str, help='Path to dir to save data')
-    commandLineParser.add_argument('--num_points', type=int, default=1000, help='Number of training data points to consider')
     args = commandLineParser.parse_args()
 
     # Save the command run
