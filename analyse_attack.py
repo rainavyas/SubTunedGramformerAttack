@@ -56,7 +56,7 @@ if __name__ == "__main__":
         print(f'On {i}/{len(preds)}')
         num_edits = count_edits(inc, pred)
         edit_counts_all.append(num_edits)
-        if any([t in inc for t in target_words]):
+        if any([(((" "+t+" " in inc) or (" "+t+"." in inc)) or (" "+t+"," in inc)) for t in target_words]):
             edit_counts_filtered.append(num_edits)
 
     # Report stats

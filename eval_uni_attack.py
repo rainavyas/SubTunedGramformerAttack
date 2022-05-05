@@ -95,11 +95,7 @@ if __name__ == "__main__":
     pred_id2text = {}
     for i, (id, sent) in enumerate(inc_id2text.items()):
         set_seeds(args.seed)
-        # print(f'On {i}/{len(inc_id2text)}')
-        if any([' '+t+ ' ' in sent for t in list(sub_dict.keys())]):
-            print(sent)
-            sent = substitute(sent, sub_dict)
-            print(sent)
+        print(f'On {i}/{len(inc_id2text)}')
         sent = substitute(sent, sub_dict)
         correction = correct(model, sent)
         pred_id2text[id] = correction
