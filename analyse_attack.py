@@ -17,11 +17,11 @@ if __name__ == "__main__":
 
     # Get command line arguments
     commandLineParser = argparse.ArgumentParser()
-    commandLineParser.add_argument('INC', type=str, help='Path to input data')
+    commandLineParser.add_argument('INC', type=str, help='Path to input data with sub')
     commandLineParser.add_argument('PRED', type=str, help='Path to predicted output test data')
     commandLineParser.add_argument('CORR', type=str, help='Path to correct output test data')
     commandLineParser.add_argument('OUT', type=str, help='Path dir for output files')
-    commandLineParser.add_argument('--target', default='', type=str, help='target words')
+    commandLineParser.add_argument('--target', default='', type=str, help='target replaced words')
     args = commandLineParser.parse_args()
 
     # Save the command run
@@ -65,7 +65,9 @@ if __name__ == "__main__":
     text += f'\nAverage number of edits: {mean(edit_counts_all)} +- {stdev(edit_counts_all)}'
     text += '\n-----------'
     text += f'\nNumber of samples filtered for target words {target_words}: {len(edit_counts_filtered)}'
-    text += f'\nAverage number of edits filtered {mean(edit_counts_filtered)} +- {stdev(edit_counts_filtered)}'
+    try:
+        text += f'\nAverage number of edits filtered {mean(edit_counts_filtered)} +- {stdev(edit_counts_filtered)}'
+    except:
     text += '\n-----------'
     print(text)
 
