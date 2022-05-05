@@ -69,7 +69,9 @@ if __name__ == "__main__":
     text += '\n-----------'
     print(text)
 
-    filename = f'{args.OUT}/{args.PRED}_{args.target}.txt'
+    pred_str = args.PRED
+    pred_str = pred_str.replace('/', "_")
+    filename = f'{args.OUT}/{pred_str}_{args.target}.txt'
     with open(filename, 'w') as f:
         f.write(text)
     
