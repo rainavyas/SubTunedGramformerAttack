@@ -20,6 +20,7 @@ if __name__ == "__main__":
     commandLineParser.add_argument('INC', type=str, help='Path to input data')
     commandLineParser.add_argument('PRED', type=str, help='Path to predicted output test data')
     commandLineParser.add_argument('CORR', type=str, help='Path to correct output test data')
+    commandLineParser.add_argument('OUT', type=str, help='Path dir for output files')
     commandLineParser.add_argument('--target', default='', type=str, help='target words')
     args = commandLineParser.parse_args()
 
@@ -59,11 +60,17 @@ if __name__ == "__main__":
             edit_counts_filtered.append(num_edits)
 
     # Report stats
-    print('-----------')
-    print(f'Average number of edits: {mean(edit_counts_all)} +- {stdev(edit_counts_all)}')
-    print('-----------')
-    print(f'Number of samples filtered for target words {target_words}: {len(edit_counts_filtered)}')
-    print(f'Average number of edits filtered {mean(edit_counts_filtered)} +- {stdev(edit_counts_filtered)}')
-    print('-----------')
+    text = ''
+    text += '-----------'
+    text += f'\nAverage number of edits: {mean(edit_counts_all)} +- {stdev(edit_counts_all)}'
+    text += '\n-----------'
+    text += f'\nNumber of samples filtered for target words {target_words}: {len(edit_counts_filtered)}'
+    text += f'\nAverage number of edits filtered {mean(edit_counts_filtered)} +- {stdev(edit_counts_filtered)}'
+    text += '\n-----------'
+    print(text)
+
+    filename = f'{args.OUT}/{args.PRED}_{args.target}.txt'
+    with open(filename, 'w') as f:
+        f.write(text)
     
     
