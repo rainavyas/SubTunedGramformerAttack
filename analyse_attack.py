@@ -36,7 +36,7 @@ if __name__ == "__main__":
         target_words = [' ']
     else:
         target_words = target_words.split()
-        target_words = [" "+t for t in target_words]
+        # target_words = [" "+t for t in target_words]
     
     # Load files
     with open(args.INC, 'r') as f:
