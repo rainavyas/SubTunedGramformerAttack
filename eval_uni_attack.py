@@ -98,7 +98,10 @@ if __name__ == "__main__":
         print(f'On {i}/{len(inc_id2text)}')
         sent = substitute(sent, sub_dict)
         correction = correct(model, sent)
+        print(sent)
+        print(correction)
         pred_id2text[id] = correction
+        inc_id2text[id] = sent
 
     # Align files and save
     inc_sens, pred_sens, corr_sens = align_data(inc_id2text, pred_id2text, corr_id2text)
