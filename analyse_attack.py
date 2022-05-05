@@ -68,7 +68,7 @@ if __name__ == "__main__":
     try:
         text += f'\nAverage number of edits filtered {mean(edit_counts_filtered)} +- {stdev(edit_counts_filtered)}'
     except:
-    text += '\n-----------'
+        text += '\n-----------'
     print(text)
 
     pred_str = args.PRED
