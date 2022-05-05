@@ -29,7 +29,12 @@ def get_avg(model, sentences, sub_dict):
 def substitute(sent, sub_dict):
     if len(sent) > 0:
         for original_word, sub_word in sub_dict.items():
-            sent = sent.replace(" "+original_word, " "+sub_word)
+            sent = sent.replace(" "+original_word+" ", " "+sub_word+" ")
+            sent = sent.replace(" "+original_word+",", " "+sub_word+",")
+            sent = sent.replace(" "+original_word+".", " "+sub_word+".")
+            sent = sent.replace(" "+original_word+":", " "+sub_word+":")
+            sent = sent.replace(" "+original_word+";", " "+sub_word+";")
+            sent = sent.replace(" "+original_word+"?", " "+sub_word+"?")
     return sent
 
 if __name__ == "__main__":
