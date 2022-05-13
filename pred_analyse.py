@@ -63,9 +63,9 @@ if __name__ == "__main__":
     for i, sent in enumerate(sentences):
         set_seeds(args.seed)
         print(f'On {i}/{len(sentences)}')
-        sent = substitute(sent, sub_dict)
-        pred = correct(model, sent)
-        num_edits = count_edits(sent, pred)
+        sent_att = substitute(sent, sub_dict)
+        pred = correct(model, sent_att)
+        num_edits = count_edits(sent_att, pred)
         edit_counts_all.append(num_edits)
         if any([(((" "+t+" " in sent) or (" "+t+"." in sent)) or (" "+t+"," in sent)) for t in target_words]):
             edit_counts_filtered.append(num_edits)
