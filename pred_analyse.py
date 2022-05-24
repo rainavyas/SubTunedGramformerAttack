@@ -62,6 +62,7 @@ if __name__ == "__main__":
 
     # Get fraction of samples with zero edits
     no_edits_count = 0
+    no_edits_count_filtered = 0
     
     for i, sent in enumerate(sentences):
         set_seeds(args.seed)
@@ -74,6 +75,8 @@ if __name__ == "__main__":
             no_edits_count += 1
         if any([(((" "+t+" " in sent) or (" "+t+"." in sent)) or (" "+t+"," in sent)) for t in target_words]):
             edit_counts_filtered.append(num_edits)
+            if num_edits == 0:
+                no_edits_count_filtered+=1
 
     # Report stats
     text = ''
@@ -84,6 +87,7 @@ if __name__ == "__main__":
     text += f'\nNumber of samples filtered for target words {target_words}: {len(edit_counts_filtered)}'
     try:
         text += f'\nAverage number of edits filtered {mean(edit_counts_filtered)} +- {stdev(edit_counts_filtered)}'
+        text += f'\nFraction of filtered samples with no edits: {no_edits_count_filtered/len(edit_counts_filtered)}'
     except:
         text += '\n-----------'
     print(text)
