@@ -59,6 +59,9 @@ if __name__ == "__main__":
     # Get average counts for all samples and filters
     edit_counts_all = []
     edit_counts_filtered = []
+
+    # Get fraction of samples with zero edits
+    no_edits_count = 0
     
     for i, sent in enumerate(sentences):
         set_seeds(args.seed)
@@ -67,6 +70,8 @@ if __name__ == "__main__":
         pred = correct(model, sent_att)
         num_edits = count_edits(sent_att, pred)
         edit_counts_all.append(num_edits)
+        if num_edits == 0:
+            no_edits_count += 1
         if any([(((" "+t+" " in sent) or (" "+t+"." in sent)) or (" "+t+"," in sent)) for t in target_words]):
             edit_counts_filtered.append(num_edits)
 
@@ -74,6 +79,7 @@ if __name__ == "__main__":
     text = ''
     text += '-----------'
     text += f'\nAverage number of edits: {mean(edit_counts_all)} +- {stdev(edit_counts_all)}'
+    text += f'\nFraction of samples with no edits: {no_edits_count/len(sentences)}'
     text += '\n-----------'
     text += f'\nNumber of samples filtered for target words {target_words}: {len(edit_counts_filtered)}'
     try:
