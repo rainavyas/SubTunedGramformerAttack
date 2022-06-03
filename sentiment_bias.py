@@ -73,9 +73,10 @@ if __name__ == "__main__":
     # calculate positive sentiment per inc sentence
     sentiments = []
     sf = nn.Softmax(dim=0)
-    for count, i in enumerate(inc_sens):
+    for count, sen in enumerate(inc_sens):
         print(f'Getting sentiment {count}/{len(inc_sens)}')
-        ids = model.tokenizer([i], return_tensors='pt')
+        encoded = model.tokenizer([sen], return_tensors='pt')
+        ids = encoded['ids']
         logits = model(ids).squeeze()
         probs = sf(logits).tolist()
         sentiments.append(probs[1])
