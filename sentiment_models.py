@@ -14,7 +14,7 @@ class BertSequenceClassifier(nn.Module):
         self.classifier = nn.Linear(hidden_size, classes)
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
-    def forward(self, input_ids, attention_mask):
+    def forward(self, input_ids, attention_mask=None):
         '''
         input_ids = [N x L], containing sequence of ids of words after tokenization
         attention_mask = [N x L], mask for attention
@@ -22,7 +22,7 @@ class BertSequenceClassifier(nn.Module):
         N = batch size
         L = maximum sentence length
         '''
-        output = self.bert(input_ids, attention_mask)
+        output = self.bert(input_ids, attention_mask=attention_mask)
         sentence_embedding = output.pooler_output # 1st token followed by linear layer and tanh
         logits = self.classifier(sentence_embedding)
         return logits
