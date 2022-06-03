@@ -22,7 +22,10 @@ class BertSequenceClassifier(nn.Module):
         N = batch size
         L = maximum sentence length
         '''
-        output = self.bert(input_ids, attention_mask=attention_mask)
+        if attention_mask == None:
+            output = self.bert(input_ids)
+        else:
+            output = self.bert(input_ids, attention_mask)
         sentence_embedding = output.pooler_output # 1st token followed by linear layer and tanh
         logits = self.classifier(sentence_embedding)
         return logits
