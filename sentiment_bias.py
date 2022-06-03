@@ -76,7 +76,7 @@ if __name__ == "__main__":
     for count, sen in enumerate(inc_sens):
         print(f'Getting sentiment {count}/{len(inc_sens)}')
         encoded = model.tokenizer([sen], return_tensors='pt')
-        ids = encoded['ids']
+        ids = encoded['input_ids']
         logits = model(ids).squeeze()
         probs = sf(logits).tolist()
         sentiments.append(probs[1])
