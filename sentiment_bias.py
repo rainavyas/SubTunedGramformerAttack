@@ -94,12 +94,14 @@ if __name__ == "__main__":
     for i in range(len(ordered_items)):
         pred_cum_edits.append(ord_pred_edits[i]+pred_cum_edits[i])
         corr_cum_edits.append(ord_corr_edits[i]+corr_cum_edits[i])
-    pred_cum_edits = pred_cum_edits[1:]
-    corr_cum_edits = corr_cum_edits[1:]
+    pred_cum_edits = [e/pred_cum_edits[-1] for e in pred_cum_edits[1:]]
+    corr_cum_edits = [e/corr_cum_edits[-1] for e in corr_cum_edits[1:]]
+
+
 
     plt.plot(fracs, pred_cum_edits, label='pred')
     plt.plot(fracs, corr_cum_edits, label='corr')
-    plt.ylabel('Cumulative Edits')
+    plt.ylabel('Cumulative Edits (%)')
     plt.xlabel('Retention Fraction')
     plt.legend()
     plt.savefig(args.OUT, bbox_inches='tight')
