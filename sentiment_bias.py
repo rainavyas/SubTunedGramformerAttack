@@ -58,9 +58,9 @@ if __name__ == "__main__":
     model.eval()
 
     # Load sentences
-    inc_sens = load_sentences(args.INC)[:5]
-    corr_sens = load_sentences(args.CORR)[:5]
-    pred_sens = load_sentences(args.PRED)[:5]
+    inc_sens = load_sentences(args.INC)
+    corr_sens = load_sentences(args.CORR)
+    pred_sens = load_sentences(args.PRED)
 
     # get edits
     pred_edits = []
