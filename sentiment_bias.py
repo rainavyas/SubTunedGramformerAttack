@@ -89,11 +89,13 @@ if __name__ == "__main__":
     
     # retention plots
     fracs = [(i+1)/len(items) for i,_ in enumerate(items)]
-    pred_cum_edits = 0
-    corr_cum_edits = 0
+    pred_cum_edits = [0]
+    corr_cum_edits = [0]
     for i in range(len(ordered_items)):
-        pred_cum_edits.append(ord_pred_edits[i])
-        corr_cum_edits.append(ord_corr_edits[i])
+        pred_cum_edits.append(ord_pred_edits[i]+pred_cum_edits[i])
+        corr_cum_edits.append(ord_corr_edits[i]+corr_cum_edits[i])
+    pred_cum_edits = pred_cum_edits[1:]
+    corr_cum_edits = corr_cum_edits[1:]
 
     plt.plot(fracs, pred_cum_edits, label='pred')
     plt.plot(fracs, corr_cum_edits, label='corr')
